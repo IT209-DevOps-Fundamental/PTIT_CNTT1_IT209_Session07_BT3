@@ -1,0 +1,13 @@
+[Unit]
+Description=Spring Boot Application Service
+After=syslog.target network.target mysql.service
+
+[Service]
+User=spring-runner
+ExecStart=/usr/bin/java -jar /opt/spring-app/app.jar
+SuccessExitStatus=143
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
